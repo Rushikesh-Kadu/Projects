@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaint</title>
+    <link rel="stylesheet" href="{% static 'css/complaint.css'%}">
+</head>
+
+<body>
+    <div class="container">
+        <h1> COMPLAINT FORM </h1>
+        <p>Have any complaint Drop here</p>
+        <form action="http://localhost:8000/Addcomplaints/complaint/" method="post">
+            {% csrf_token %}
+            <div class="column">
+                <label for="email">Email :</label>
+                <input type="email" name='email' id="email" placeholder="Your Email Here">
+            </div>
+            <br>
+            <div class="column">
+                <label for="subject">Subject :</label>
+                <input type="subject" name='subject' id="subject" placeholder="Enter Subject">
+            </div>
+            <br>
+            <div class="row">
+                <div class="column">
+                    <label for="subject">Type of Complaint :</label>
+                    <br><br>
+                    <select id="Type of Complaint" name="type">
+                        <option value="Classroom">Classroom</option>
+                        <option value="Teacher">Teacher</option>
+                        <option value="Management">Management</option>
+                        <option value="College">College</option>
+                        <option value="Exam">Exam</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <label for="issue">Describe Your Complaint :</label>
+                    <textarea id="issue" name="complaint" placeholder="Describe Your Issue In Detail" rows="4"></textarea>
+                </div>
+
+            </div>
+            <h4 style="color: green">{{msg}}</h4>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+</body>
+
+</html>

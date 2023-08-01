@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/testapp.css'%}">
+    <title>Test Paper</title>
+</head>
+<body>
+    <div id="form-div">
+    <h2> 11+22 ? </h2>
+      <form action='http://localhost:8000/exam/result/' method='post'>
+        <input type='radio' name="option" value="34"> 34 <br>
+        <input type='radio' name="option" value="35"> 35 <br>
+        <input type='radio' name="option" value="33"> 33 <br>
+        <input type='radio' name="option" value="32"> 32       <br><br>
+        <input type='submit' name='Submit'>
+      </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anoyonumus Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="" crossorigin="" referrerpolicy="">
+    <link rel="stylesheet" href="{% static 'css/anonymous1.css'%}">
+    <script src="{%static 'js/anonymous.js' %}"></script>
+
+</head>
+<body>
+    
+    <div class="container">
+      <form action="http://localhost:8000/Addcomplaints/anonymousform/" method="post">
+        {% csrf_token %}
+        <div class="form signup">
+          <h1>Anoyonumus Form</h1>
+          <h4 style="color: aquamarine;">{{MSG}}</h4>
+          <div class= "inputBox">
+            <input type="text" name="name" required="required" placeholder="Enter Name" >
+            <i class="fa-regular fa-user"></i>
+           <span></span>
+          </div>
+          <div class="inputBox">
+            <input type="text" name="email" required= "required" placeholder="Email Address">
+            <i class="fa-regular fa-envelope"></i>
+            <span></span>
+          </div>
+          <div id='depart' class= "inputBox">
+            <!-- <input type="text" name="department" required= "required" placeholder="Department"> -->
+            <!-- <label for="Department">Select Department :</label>
+                    <br><br> -->
+                    <!-- <div class="select"> -->
+                    <select class="select" name="department" onload="changeColor(this)">
+                        <option class="op" disabled selected hidden >Department</option>
+                        <option value="MCA">MCA</option>
+                        <option value="MBA">MBA</option>
+                    </select>
+            <i class="fa-regular fa-building"></i>
+          <!-- </div> -->
+            <span></span>
+          </div>
+          <div class= "inputBox">
+            <input type="text" name="subject" required="required" placeholder="Subject">
+            <i class="fa-regular fa-book"></i>
+           <span></span>
+          </div>
+          <div class= "inputBox">
+            <!-- <input type="textarea" name="describe" required="required" placeholder="Describe your complaint"> -->
+            <textarea placeholder="Describe Complaint" class="select"  name="describe" rows="4" cols="80"></textarea>
+            <i class="fa-solid fa-file"></i>
+           <span></span>
+          </div>
+          <div class= "inputBox">
+            <input type="submit">
+
+          </div>
+        </div>
+      </form>
+     </div>
+    
+</body>
+</html>
+<body>
+    

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link rel="stylesheet" href="{% static 'css/style1.css'%}">
+</head>
+<body>
+    <div class="box">
+        <span class="borderline"></span>
+    <form action="http://localhost:8000/Login/userLogin/" method="post"> 
+        {% csrf_token %}
+        <h2>Sign in</h2>
+        <div class="inputBox">
+            <input type="text" name='username' required="required">
+            <span>Username</span>
+            <i> </i>
+        </div>
+        <div class="inputBox">
+            <input type="password" name='password' required="required">
+            <span>Password</span>
+            <i> </i>
+        </div>
+        <div class="links">
+            <a href="#">Sign up</a>
+        </div>
+        <p style="color:aqua">{{error}}</p>
+        <input type="submit" value="Login">
+    </form>
+    </div>
+</body>
+</html>

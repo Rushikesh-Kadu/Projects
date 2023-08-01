@@ -1,0 +1,97 @@
+<html>
+{%load static%}
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+            <link rel="stylesheet" href= "{%static 'css/profile.css'%}">
+    </head>
+    <body>
+        <div class="container">
+            <div class="main">
+                <div class="topbar">
+                    <a href="http://localhost:8000/Login/Logout/">logout</a>
+                    <a href="http://localhost:8000/Addcomplaints/">Add_Complaint</a>
+                    <a href="http://localhost:8000/Addcomplaints/unsolved/">Pending</a>
+                    <a href="http://localhost:8000/Addcomplaints/inprocess/">Processing</a>
+                    <a href="http://localhost:8000/Addcomplaints/solved/">Solved Complaints</a>
+                    <a href="http://localhost:8000/Addcomplaints/statistic/">Statistics</a>
+                    <a href="http://localhost:8000/www.GrievanceSystem.com/">Home</a>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 mt-1">
+                        <div class="card text-center sidebar">
+                            <h1 class="m-5">Profile :</h1>
+                            <h3>Welcome, {{greet}}</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-8 mt-1">
+            <div class="card mb-3 content">
+            <h1 class="m-3 pt-3">About</h1>
+            <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h5>Full Name</h5>
+                        </div>
+                        <div class="col-md-9 text-secondary">
+                            {{name}}
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                        <div class="col-md-3">
+                        <h5>Email</h5>
+                        </div>
+                        <div class="col-md-9 text-secondary">
+                        {{email}}
+                    </div>
+                </div>
+                    <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <h5>Phone</h5>
+                    </div>
+                <div class= "col-md-9 text-secondary">
+                        {{contact}}
+                </div>
+                </div>
+                <hr>
+                <div class="row">
+                <div class="col-md-3">
+                        <h5>Course</h5>
+                </div>
+                    <div class="col-md-9 text-secondary">
+                        {{course}}
+                </div>
+                </div>
+                <hr>
+                <div class="row">
+                <div class="col-md-3">
+                        <h5>Academic Year</h5>
+                </div>
+                    <div class="col-md-9 text-secondary">
+                        {{year}}
+                </div>
+                </div>
+                <hr>
+                <div class="row">
+                <div class="col-md-3">
+                        <h5>Gender</h5>
+                </div>
+                    <div class="col-md-9 text-secondary">
+                        {{gender}}
+                </div>
+                </div>
+                <hr>
+    </div>
+    </div>
+    
+    </div>
+    </div>
+    </div>
+    </div>
+    
+    </body>
+    </html>
+    
+
+</body>
+</html>
