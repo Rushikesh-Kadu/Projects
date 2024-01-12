@@ -4,8 +4,10 @@ from django.contrib.auth.hashers import make_password,check_password
 from django.http import *
 from Profile.models import *
 
+
 def register(request):
     return render(request,'Login/signup.html')
+
 
 def signup(request):
     if request.method=='POST':
@@ -31,7 +33,7 @@ def signup(request):
             return render(request,'Login/signup.html',{'msg':'Field Can not be Blank and Data should in correct Form !!'})
     else:
         return render(request,'Login/signup.html')
-    
+
 
 def signin(request):
     return render(request,'Home/signin.html')

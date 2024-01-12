@@ -3,14 +3,42 @@
 <html>
   <head>
     <title>Registration Form In HTML and CSS</title>
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-    ></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+
     <link rel="stylesheet" href="{%static 'css/signup.css'%}" />
-    <!-- <script>
-		document.getElementById('register_form').click();
-	</script> -->
+    <style>
+      #input-box{
+         /* background: #fff;
+          width: 90%; 
+          max-width: 500px; 
+          border-radius: 5px;
+          padding: 10px 20px;
+          margin: 300px auto;*/
+          display:  flex;
+          align-items: center;
+      }
+
+      #input-box img{
+          width: 25px;
+          cursor: pointer;
+      }
+
+      #input-box1{
+         /* background: #fff;
+          width: 90%; 
+          max-width: 500px; 
+          border-radius: 5px;
+          padding: 10px 20px;
+          margin: 300px auto;*/
+          display:  flex;
+          align-items: center;
+      }
+
+      #input-box1 img{
+          width: 25px;
+          cursor: pointer;
+      }
+  </style>
   </head>
   <body>
     <div class="wrapper">
@@ -20,9 +48,9 @@
         </div>
 
         <div class="r_form">
-          <form action="http://localhost:8000/Login/signup/" method="post">
+          <form action="http://localhost:8000/Login/signup/" onsubmit="return validateForm()" method="post">
             {%csrf_token%} {% if msg %}
-            <h3 style="color: green">{{msg}}</h3>
+            <h3 style="color: rgb(7 120 117);">{{msg}}</h3>
             <br />
             {% endif%}
             <div class="input_wrap">
@@ -31,7 +59,8 @@
                 <span class="icon">
                   <ion-icon name="person-sharp"></ion-icon>
                 </span>
-                <input type="text" name="name" class="input" id="yourname" />
+                <input type="text" name="name" class="input" id="yourname" autocomplete="off"/>
+                <p id="Ename" style="color:red; "></p>
               </div>
             </div>
             <div class="input_wrap">
@@ -45,12 +74,15 @@
                   name="email"
                   class="input"
                   id="emailaddress"
+                  autocomplete="off"
                 />
+                <p id="Eemail" style="color:red; "></p>
               </div>
             </div>
             <div class="input_wrap">
               <label for="password">Password</label>
-              <div class="input_item">
+              <p id="Epass" style="color:red; "></p>
+              <div class="input_item" id="input-box">
                 <span class="icon">
                   <ion-icon name="key-sharp"></ion-icon>
                 </span>
@@ -60,11 +92,14 @@
                   class="input"
                   id="password"
                 />
+                &nbsp;
+            <img src="{% static 'images/eye-close.png'%}"   id="togglePassword"/>
               </div>
             </div>
             <div class="input_wrap">
-              <label for="confirmpassword">Confirm Password</label>
-              <div class="input_item">
+              <label for="password1">Confirm Password</label>
+              <p id="Ecpass" style="color:red; "></p>
+              <div class="input_item" id="input-box1">
                 <span class="icon">
                   <ion-icon name="key-sharp"></ion-icon>
                 </span>
@@ -72,8 +107,10 @@
                   type="password"
                   name="cpassword"
                   class="input"
-                  id="confirmpassword"
+                  id="password1"
                 />
+                &nbsp;
+            <img src="{% static 'images/eye-close.png'%}"   id="togglePassword1"/>
               </div>
             </div>
             <div class="input_wrap">
@@ -82,31 +119,32 @@
                 <span class="icon">
                   <ion-icon name="call-sharp"></ion-icon>
                 </span>
-                <input type="number" name="number" class="input" id="phone" />
+                <input type="number" name="number" class="input" id="phone" autocomplete="off" />
+                <p id="Enumber" style="color:red; "></p>
               </div>
             </div>
             <div class="input_wrap">
-              <label for="phone">Year ( Learning year )</label>
+              <label for="course">Year ( Learning year )</label>
               <div class="input_item">
                 <span class="icon">
 					<ion-icon name="calendar-outline"></ion-icon>
                 </span>
                 <select name="year" id="course" class='input'>
-					<option value="2022">2022</option>
-					<option value="2023">2023</option>
-					<option value="2024">2024</option>
-					<option value="2025">2025</option>
-					<option value="2026">2026</option>
-					<option value="2027">2027</option>
-					<option value="2028">2028</option>
-					<option value="2029">2029</option>
-					<option value="2030">2030</option>
+					<option value="2022">2022-23</option>
+					<option value="2023">2023-24</option>
+					<option value="2024">2024-25</option>
+					<option value="2025">2025-26</option>
+					<option value="2026">2026-27</option>
+					<option value="2027">2027-28</option>
+					<option value="2028">2028-29</option>
+					<option value="2029">2029-30</option>
+					<option value="2030">2030-31</option>
 				  </select>
               </div>
             </div>
 			
             <div class="input_wrap">
-				<label for="yourname">Course</label>
+				<label for="department">Course</label>
 				<div class="input_item">
 					<span class="icon">
 					  <ion-icon name="person-sharp"></ion-icon>
@@ -118,7 +156,7 @@
 					  id="yourname"
 					  placeholder="MCA / MBA"
 					  /> -->
-					  <select name="course" id="course" class='input'>
+					  <select name="course" id="department" class='input'>
 						<option value="MCA">MCA</option>
 						<option value="MBA">MBA</option>
 					  </select>
@@ -142,7 +180,7 @@
               </div>
             </div> -->
             <div class="input_wrap">
-              <label>Gender</label>
+              <label for="male">Gender</label>
               <div class="input_radio">
                 <div class="input_radio_item">
                   <input
@@ -152,6 +190,7 @@
                     class="radio"
                     value="male"
                   />
+
                   <label for="male" class="radio_mark">
                     <ion-icon class="i" name="male-sharp"></ion-icon>
                     Male</label
@@ -173,10 +212,109 @@
               </div>
             </div>
 
-            <button type="submit">Register Now</button>
+            <button type="submit" >Register Now</button>
           </form>
         </div>
       </div>
     </div>
+    
+    <script>
+      function validateForm()
+      {
+        let name = document.getElementById("yourname");
+        let email = document.getElementById("emailaddress");
+        let password = document.getElementById("password");
+        let cpassword = document.getElementById("password1");
+        let number = document.getElementById("phone");
+        let flag = 1;
+
+        console.log("Validation");
+
+        if(name.value == "")
+        {
+            document.getElementById("Ename").innerHTML= "Name is Empty";
+            flag = 0;
+        }
+        else
+            document.getElementById("Ename").innerHTML= "";
+
+        if(email.value == "")
+        {
+            document.getElementById("Eemail").innerHTML= "Email is Empty";
+            flag = 0;
+        }
+        else
+            document.getElementById("Eemail").innerHTML= "";
+          
+        
+
+        if(password.value =="")
+        {
+            document.getElementById("Epass").innerHTML= "Password is Empty";
+            flag = 0;
+        }
+        else
+            document.getElementById("Epass").innerHTML= "";
+          
+        
+
+        if(cpassword.value == "")
+        {
+            document.getElementById("Ecpass").innerHTML= "Confirm Password is Empty";
+            flag = 0;
+        }
+        else if(password.value != cpassword.value)
+        {
+            document.getElementById("Ecpass").innerHTML= "Password and Confirm Password doesn't Match";
+            flag = 0;
+        }
+        else
+            document.getElementById("Ecpass").innerHTML= "";
+          
+        
+
+        if(number.value == "")
+        {
+            document.getElementById("Enumber").innerHTML= "Number is Empty";
+            flag = 0;
+        }
+        else if(number.value.length!=10)
+        {
+            document.getElementById("Enumber").innerHTML = "Number must have 10 digits";
+            flag = 0;
+        }
+        else
+            document.getElementById("Enumber").innerHTML= "";
+        
+         if(flag == 1)
+            return true;
+         else
+            return false;
+        
+      }
+
+        const togglePassword = document.querySelector("#togglePassword");
+        const password = document.querySelector("#password");
+        togglePassword.addEventListener("click", () => {
+          // Toggle the type attribute using
+          // getAttribure() method
+        const type = password.getAttribute("type") === "password" ? "text" : "password";
+        password.setAttribute("type", type);
+          // Toggle the eye and bi-eye icon
+        this.classList.toggle("bi-eye");
+        });      
+
+
+        const togglePassword1 = document.querySelector("#togglePassword1");
+      const password1 = document.querySelector("#password1");
+      togglePassword1.addEventListener("click", () => {
+        // Toggle the type attribute using
+        // getAttribure() method
+        const type =  password1.getAttribute("type") === "password" ? "text" : "password";
+        password1.setAttribute("type", type);
+        // Toggle the eye and bi-eye icon
+        this.classList.toggle("bi-eye");
+      });
+    </script>
   </body>
 </html>

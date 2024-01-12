@@ -8,6 +8,7 @@
     <title>Login Page</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
     <link rel="stylesheet" href="{% static 'css/style1.css'%}">
+   
 </head>
 <body>
     <div class="box">
@@ -20,17 +21,20 @@
             <span>Username</span>
             <i> </i>
         </div>
-        <div class="inputBox">
+        <div class="inputBox" id="input-box">
             <input type="password" name='password' required="required">
+            
             <span>Password</span>
             <i> </i>
         </div>
         <div class="links">
-            <a href="#">Sign up</a>
+            <a href="http://localhost:8000/Login/register/">Sign up</a>
         </div>
         <p style="color:aqua">{{error}}</p>
         <input type="submit" value="Login">
     </form>
     </div>
+
+    
 </body>
 </html>

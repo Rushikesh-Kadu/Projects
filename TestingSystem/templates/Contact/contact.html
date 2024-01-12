@@ -29,24 +29,29 @@
                 
             </div>
             <div class="form-wrap">
-                <form action="http://localhost:8000/contact/saveContact/" method="POST">
+                <form action="http://localhost:8000/contact/saveContact/" onsubmit="return validateForm()" method="POST">
                     {%csrf_token%}
                     <h2 class="form-title">Send us a message</h2>
                     <div class="form-fields">
                         <div class="form-group">
-                            <input type="text" name="firstName" class="fname" placeholder="First Name" autocomplete="off">
+                            <p id="Efname" style="color: hotpink;"></p>
+                            <input type="text" name="firstName" id="fname" placeholder="First Name" autocomplete="off">
                         </div>
                         <div class="form-group">
-                            <input type="text" name="lastName" class="lname" placeholder="Last Name" autocomplete="off">
+                            <p id="Elname" style="color: hotpink;"></p>
+                            <input type="text" name="lastName" id="lname" placeholder="Last Name" autocomplete="off">
                         </div>
                         <div class="form-group">
-                            <input type="email" name="email" class="email" placeholder="Mail" autocomplete="off">
+                            <p id="Eemail" style="color: hotpink;"></p>
+                            <input type="email" name="email" id="email" placeholder="Mail" autocomplete="off">
                         </div>
                         <div class="form-group">
-                            <input type="text" name="number" class="phone" placeholder="Phone" autocomplete="off">
+                            <p id="Ephone" style="color: hotpink;"></p>
+                            <input type="text" name="number" id="phone" placeholder="Phone" autocomplete="off">
                         </div>
                         <div class="form-group">
-                            <textarea name="message" id="" placeholder="Write your message" autocomplete="off"></textarea>
+                            <p id="Emsg" style="color: hotpink;"></p>
+                            <textarea name="message" id="msg" placeholder="Write your message" autocomplete="off"></textarea>
                         </div>
                     </div>
                     <input type="submit" value="Send Message" class="submit-button">
@@ -55,5 +60,74 @@
             </div>
         </div>
     </section>
+    <script>
+      function validateForm()
+      {
+        let firstName = document.getElementById("fname");
+        let lastName = document.getElementById("lname");
+        let email = document.getElementById("email");
+        let number = document.getElementById("phone");
+        let msg = document.getElementById("msg");
+        let flag = 1;
+
+        console.log(firstName.value);
+        console.log(lastName.value);
+        console.log(email.value);
+        console.log(number.value);
+        console.log(msg.value);
+
+
+        if(firstName.value == "")
+        {
+            document.getElementById("Efname").innerHTML="First Name is Empty";
+            flag = 0;
+        }
+        else
+            document.getElementById("Efname").innerHTML="";
+
+        if(lastName.value == "")
+        {
+            document.getElementById("Elname").innerHTML="Last Name is Empty";
+            flag = 0;
+        }
+        else
+            document.getElementById("Elname").innerHTML="";
+
+        if(email.value == "")
+        {
+            document.getElementById("Eemail").innerHTML="Email is Empty";
+            flag = 0;
+        }
+        else
+            document.getElementById("Eemail").innerHTML="";
+
+        if(number.value == "")
+        {
+            document.getElementById("Ephone").innerHTML="Number is Empty";
+            flag = 0;
+        }
+        else if(number.value.length !=10)
+        {
+            document.getElementById("Ephone").innerHTML="Must 10 digit";
+            flag = 0;
+        }
+        else
+            document.getElementById("Ephone").innerHTML="";
+
+        if(msg.value=="")
+        {
+            document.getElementById("Emsg").innerHTML="Message is Empty";
+            flag = 0; 
+        }
+        else
+            document.getElementById("Emsg").innerHTML="";
+
+        if(flag == 1)
+           return true;
+        else
+           return false;
+      }
+            
+    </script>
 </body>
 </html>

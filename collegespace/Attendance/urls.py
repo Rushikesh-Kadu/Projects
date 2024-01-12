@@ -12,4 +12,5 @@ urlpatterns = [
     path('report/',report),
     path('give_report/',give_report),
     path('save/',save),
+    path('showData/',show),
 ]

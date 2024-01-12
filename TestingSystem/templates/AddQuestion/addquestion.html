@@ -33,17 +33,17 @@
                   Add Questions Subject Wise
                 </h3>
                 <h5 style="color:green">{{msg}}</h5>
-                <form action="http://localhost:8000/Addque/Savequestion/" method="post">
+                <form action="http://localhost:8000/Addque/Savequestion/" onsubmit="return validate()" method="post">
                     {%csrf_token%}
                   <div class="row">
                     <div class="col-12">
-                      <select class="select form-control-lg" name="Subject">
+                      <select class="select form-control-lg" id="subject" name="Subject">
                         <option value="1" disabled>Choose option</option>
                         <option value="Python">Python</option>
                         <option value="C">C</option>
                         <option value="C++">C++</option>
                       </select>
-                      <label class="form-label select-label"
+                      <label for="subject"
                         >Choose Subject</label
                       >
                     </div>
@@ -52,13 +52,14 @@
                   <div class="row">
                     <div class="col-12 mb-4">
                       <div class="form-outline mb-4">
+                        <p id="Eque" style="color:hotpink"></p>
                         <textarea
                           class="form-control"
-                          id="textAreaExample6"
+                          id="textarea"
                           rows="2"
                           name="Question"
                         ></textarea>
-                        <label class="form-label" for="textAreaExample6"
+                        <label for="textarea"
                           >Enter Question [Properly]</label
                         >
                       </div>
@@ -68,26 +69,28 @@
                   <div class="row">
                     <div class="col-md-6 mb-4 d-flex align-items-center">
                       <div class="form-outline datepicker w-100">
+                        <p id="Ea" style="color:hotpink"></p>
                         <input
                           name="Option_a"
                           type="text"
                           class="form-control form-control-lg"
                           id="option_a"
                         />
-                        <label for="birthdayDate" class="form-label"
+                        <label for="option_a"
                           >Option A</label
                         >
                       </div>
                     </div>
                     <div class="col-md-6 mb-4">
                       <div class="form-outline datepicker w-100">
+                        <p id="Eb" style="color:hotpink"></p>
                         <input
                           name="Option_b"
                           type="text"
                           class="form-control form-control-lg"
                           id="option_b"
                         />
-                        <label  for="birthdayDate" class="form-label"
+                        <label for="option_b"
                           >Option B</label
                         >
                       </div>
@@ -97,26 +100,28 @@
                   <div class="row">
                     <div class="col-md-6 mb-4 pb-2">
                       <div class="form-outline">
+                        <p id="Ec" style="color:hotpink"></p>
                         <input
                           name="Option_c"
                           type="text"
-                          id="Option_c"
+                          id="option_c"
                           class="form-control form-control-lg"
                         />
-                        <label  class="form-label" for="emailAddress"
+                        <label for="option_c" 
                           >Option C</label
                         >
                       </div>
                     </div>
                     <div class="col-md-6 mb-4 pb-2">
                       <div class="form-outline">
+                        <p id="Ed" style="color:hotpink"></p>
                         <input
                           name="Option_d"
                           type="text"
                           id="option_d"
                           class="form-control form-control-lg"
                         />
-                        <label class="form-label" for="phoneNumber"
+                        <label for="option_d"
                           >Option D</label
                         >
                       </div>
@@ -126,13 +131,14 @@
                   <div class="row">
                     <div class="col-md-6 mb-4 pb-2">
                       <div class="form-outline">
+                        <p id="Eanswer" style="color:hotpink"></p>
                         <input
                           name="Answer"
                           type="text"
                           id="Answer"
                           class="form-control form-control-lg"
                         />
-                        <label  class="form-label" for="emailAddress"
+                        <label for="Answer"
                           >Answer</label
                         >
                       </div>
@@ -154,5 +160,81 @@
         </div>
       </div>
     </section>
+
+    <script>
+       function validate()
+       {
+             let Question = document.getElementById("textarea");
+             let option_a = document.getElementById("option_a");
+             let option_b = document.getElementById("option_b");
+             let option_c = document.getElementById("option_c");
+             let option_d = document.getElementById("option_d");
+             let answer = document.getElementById("Answer");
+             let flag = 1;
+
+            //  console.log("Question:",Question.value);
+            //  console.log("a:",option_a.value);
+            //  console.log("b:",option_b.value);
+            //  console.log("c:",option_c.value);
+            //  console.log("d:",option_d.value);
+            //  console.log("answer:",answer.value);
+
+
+             if(Question.value == "")
+             {
+                  document.getElementById("Eque").innerHTML = "Question is Empty";
+                  flag = 0;
+             }
+             else
+                  document.getElementById("Eque").innerHTML = "";
+
+             if(option_a.value == "")
+             {
+                  document.getElementById("Ea").innerHTML = "Option A is Empty";
+                  flag = 0;
+             }
+             else
+                  document.getElementById("Ea").innerHTML = "";
+
+             if(option_b.value == "")
+             {
+                  document.getElementById("Eb").innerHTML = "Option B is Empty";
+                  flag = 0;
+             }
+             else
+                  document.getElementById("Eb").innerHTML = "";
+
+             if(option_c.value == "")
+             {
+                  document.getElementById("Ec").innerHTML = "Option C is Empty";
+                  flag = 0;
+             }
+             else
+                  document.getElementById("Ec").innerHTML = "";
+
+             if(option_d.value == "")
+             {
+                  document.getElementById("Ed").innerHTML = "Option D is Empty";
+                  flag = 0;
+             }
+             else
+                  document.getElementById("Ed").innerHTML = "";
+
+             if(answer.value == "")
+             {
+                  document.getElementById("Eanswer").innerHTML = "Answer is Empty";
+                  flag = 0;
+             }
+             else
+                  document.getElementById("Eanswer").innerHTML = "";
+            
+            if(flag==1)
+               return true;
+            else
+              return false;
+              
+
+       }
+    </script>
   </body>
 </html>

@@ -22,7 +22,7 @@ def userLogin(request):
     else:
         s='http://localhost:8000/Login/'
         return HttpResponseRedirect(s)
-    
+
 def test(request):
     if 'username' in request.session:
         return render(request,'Login/starttest.html')

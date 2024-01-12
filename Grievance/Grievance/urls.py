@@ -17,9 +17,9 @@ from django.contrib import admin
 from django.urls import path
 from django.urls import include
 
-admin.site.site_url='http://localhost:8000/www.GrievanceSystem.com/'
-admin.site.site_title='Admin Panel'
 admin.site.site_header='Admin Panel'
+admin.site.site_url='http://localhost:8000/www.GrievanceSystem.com/'
+admin.site.site_title='Admin Log In Panel'
 
 urlpatterns = [
     path('Addcomplaints/',include('Complaints.urls')),

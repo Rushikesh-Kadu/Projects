@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from random import randrange
 from QuestionPaper.models import *
 from datetime import datetime
@@ -107,7 +107,8 @@ def checkAns(request,sub):
 
 
 def result(request):
-   return render(request,'result.html')
+   s = "http://localhost:8000/Quepaper/result/"
+   return redirect(s)
 
 def history(request):
     if 'username' in request.session:

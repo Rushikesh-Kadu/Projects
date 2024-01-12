@@ -4,6 +4,7 @@ from Attendance.models import *
 from django.contrib.auth import authenticate,login,logout
 import datetime
 
+
 def save(request):
     att_data = request.POST
     date = att_data['date']
@@ -26,6 +27,7 @@ def save(request):
         while id<=student_length:
             a=CGMA_Attendance()
             stud_data=Student_Data.objects.get(stu_id=id)
+            a.student_name=stud_data.student_name
             a.date=date
             if 'present'== att_data[str(id)]:
                a.attendance=1
@@ -37,6 +39,7 @@ def save(request):
         while id<=student_length:
             a=PHP_Attendance()
             stud_data=Student_Data.objects.get(stu_id=id)
+            a.student_name=stud_data.student_name
             a.date=date
             if 'present'== att_data[str(id)]:
                a.attendance=1
@@ -48,6 +51,7 @@ def save(request):
         while id<=student_length:
             a=AI_Attendance()
             stud_data=Student_Data.objects.get(stu_id=id)
+            a.student_name=stud_data.student_name
             a.date=date
             if 'present'== att_data[str(id)]:
                a.attendance=1
@@ -70,27 +74,36 @@ def give_report(request):
     if request.method=="POST":
         sub=request.POST['subject']
         name=request.POST['name']
-        if sub=='MC':
-           a=Student_Data.objects.get(student_name=name)
-           b=MC_Attendance.objects.filter(student_name__iexact=name)
-           data={'data':b,'s':a}
-           return render(request,'Attendance/reports.html',data)
-        elif sub=='CGMA':
-           a=Student_Data.objects.get(student_name=name)
-           b=CGMA_Attendance.objects.filter(student_name__iexact=name)
-           data={'data':b,'s':a}
-           return render(request,'Attendance/reports.html',data)
-        elif sub=='PHP':
-           a=Student_Data.objects.get(student_name=name)
-           b=PHP_Attendance.objects.filter(student_name__iexact=name)
-           data={'data':b,'s':a}
-           return render(request,'Attendance/reports.html',data)
-        elif sub=='AI':
-           a=Student_Data.objects.get(student_name=name)
-           b=AI_Attendance.objects.filter(student_name__iexact=name)
-           data={'data':b,'s':a}
-           return render(request,'Attendance/reports.html',data)
-    
+        try:
+            if sub=='MC':
+                a=Student_Data.objects.get(student_name=name)
+                b=MC_Attendance.objects.filter(student_name__iexact=name)
+                data={'data':b,'s':a}
+                return render(request,'Attendance/reports.html',data)
+            elif sub=='CGMA':
+                a=Student_Data.objects.get(student_name=name)
+                b=CGMA_Attendance.objects.filter(student_name__iexact=name)
+                data={'data':b,'s':a}
+                return render(request,'Attendance/reports.html',data)
+            elif sub=='PHP':
+                a=Student_Data.objects.get(student_name=name)
+                b=PHP_Attendance.objects.filter(student_name__iexact=name)
+                data={'data':b,'s':a}
+                return render(request,'Attendance/reports.html',data)
+            elif sub=='AI':
+                a=Student_Data.objects.get(student_name=name)
+                b=AI_Attendance.objects.filter(student_name__iexact=name)
+                data={'data':b,'s':a}
+                return render(request,'Attendance/reports.html',data)
+        except:
+             return render(request,'Attendance/reports.html',{"msg":"Student record doesn't Exist"})
+    else:
+        return render(request,'Attendance/reports.html')
+  
+def show(request):
+    data=Student_Data.objects.all()
+    return render(request,'Attendance/studentData.html',{"data":data})
+   
 # def save_attendance(request,id,name,presenty,sub,date):
 #         if sub=='MC':
 #             a=MC_Attendance()

@@ -34,19 +34,10 @@
 <body>
   
   <!-- Menus started-->
-  <header>
-    
-      <!-- <h1>Online Attendance Management System 1.0</h1>
-      <div class="navbar">
-      <a href="signup.html">Create Users</a>
-      <a href="index.html">Add Data</a>
-      <a href=" ">Logout</a>
 
-    </div> -->
-  </header>
   <!-- Menus ended -->
   <div class="admintask">
-      <h3 class="text-center"><b>Add Data</b></h3>
+      <h3 class="text-center"><b>Add Data</b></h3> 
     </center>
     <!-- Error or Success Message printint started -->
     <div class="message"></div>
@@ -67,7 +58,7 @@
             <h4><b>Add Student's Information </b></h3>
           </center>
           <br>
-
+        
           <div class="form-group">
             <label for="input1" class="col-sm-3 control-label">Student Id</label>
             <div class="col-sm-7">
@@ -95,9 +86,11 @@
               <input type="text" name="st_sem" class="form-control" id="input1" placeholder="semester ex. Fall-15" />
             </div>
           </div>
-
+          
           <input type="submit" class="btn col-md-2 col-md-offset-8 " style="background-color: #9933ff; color:white;"
-            value="Add Student"/>
+            value="Add Student"/><br><br>
+          <a href="http://localhost:8000/www.HVPMcollegespace.com/" class="btn col-md-2 col-md-offset-8 " style="background-color: #9933ff; color:white; ;"
+          >Home</a>
         </form>
         <p style="color:green;">{{data}}</p>
       </center>
